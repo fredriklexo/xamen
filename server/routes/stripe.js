@@ -6,6 +6,7 @@ import User from '../model/User.js'
 import bcrypt from "bcrypt"
 import {verifyTokenAndAuthorization} from './verifyToken.js';
 import * as dotenv from 'dotenv';
+import Cart from '../model/Cart.js'
 
 
 const saltRounds = 10;
@@ -14,10 +15,6 @@ const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
 
 const router = express.Router()
 
-const fulfillOrder = (lineItems) => {
-  // TODO: fill me in
-  console.log("Fulfilling order", lineItems);
-}
 
 
 const createNewOrder = async (customer,data) => {
@@ -35,6 +32,7 @@ const createNewOrder = async (customer,data) => {
 
   try {
       const saveOrder = await newOrder.save()
+      await Cart.findOneAndDelete({owner:newOrder.userId})
       console.log("Saved order to mongodb: ",saveOrder)
   } catch (error) {
     console.log(error)
@@ -69,9 +67,8 @@ router.post('/webhook', express.raw({type: 'application/json'}), async (request,
       break;
       case 'checkout.session.completed':
         const data = event.data.object;
-        console.log("checkoutMethod:", data)
         stripe.customers.retrieve(data.customer).then((customer => {
-          console.log("customer:", customer)
+          
           createNewOrder(customer,data)
         })).catch(err => console.log(err.message))
         // handlePaymentMethodAttached(paymentMethod);
@@ -85,6 +82,17 @@ router.post('/webhook', express.raw({type: 'application/json'}), async (request,
   response.send();
 });
 
+router.post('/order/success', async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.retrieve(req.body.userId);
+  const customer = await stripe.customers.retrieve(session.customer);
+
+  // res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
+  res.status(200).json(customer)
+  } catch (error) {
+    
+  }
+  
+});
 
 export default router
-

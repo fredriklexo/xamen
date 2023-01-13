@@ -93,7 +93,6 @@ async function testPayment(cart) {
 
     const res = await fetch("http://localhost:5000/order/create-checkout-session", { 
     method: 'POST',
-    Authorization: "Bearer sk_test_51MItJtGqWkaNAgB8Kq08bFqoRccl2Y2Fjh2y452740Dhd44HB5lBvjSeMU810SsDaWaJUQ5jtlJwPxTsDZsPRW7Q00oKsdXXga",
     headers: {
         Accept: "applicaiton/json",
         "Content-Type": "application/json",
@@ -126,7 +125,7 @@ export default function CartMrFoo() {
     // var item = await getData()
     let [cart, setCart] = useState([]);
     
-    console.log("dddd",cart)
+    
 
     let getCart = async () => { 
         let  response = await getData()

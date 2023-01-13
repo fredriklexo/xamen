@@ -154,7 +154,7 @@ router.post('/create-checkout-session', verifyToken, async(req, res) => {
                 mode: "payment",
                 client_reference_id: owner,
 
-                success_url: `${YOUR_DOMAIN}/success?id={CHECKOUT_SESSION_ID}`,
+                success_url: `${YOUR_DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${YOUR_DOMAIN}/cart`,
               });
               
@@ -170,12 +170,13 @@ router.post('/create-checkout-session', verifyToken, async(req, res) => {
 })
 
 
-router.get('/success', async (req, res) => {
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-    const customer = await stripe.customers.retrieve(session.customer);
+// router.get('/success', async (req, res) => {
+//     console.log("---------------> ",req.body)
+//     const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+//     const customer = await stripe.customers.retrieve(session.customer);
   
-    res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
-  });
+//     res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
+//   });
 
 export default router
 
