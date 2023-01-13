@@ -1,0 +1,57 @@
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    height: 90px;
+    max-width: 1600px;
+    background-color: #182b27;
+   
+}
+
+.left{
+    display: flex;
+    flex: 1;
+}
+
+.main{
+    flex: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  
+}
+.main a{
+    display: flex;
+    padding: 0 15px;
+    height: 100%;
+    align-items: center;
+}
+
+.main a:hover {
+    color: orange;
+}
+
+
+
+.right{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap:20px;
+}
+
+.logo{
+    width: 200px;
+}
+
+ /* ------------ Sub menu section ------------ */
+
+.subMenu{
+    display: none;
+}

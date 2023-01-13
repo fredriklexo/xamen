@@ -1,0 +1,110 @@
+.loginContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: #182b27;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    
+}
+
+.loginWrapper{
+   
+    display: flex;
+    
+}
+.logoLink{
+    display: flex;
+    justify-content: center;
+    margin: 50px 50px 50px 50px;
+}
+.logo{
+    max-width: 300px;
+   
+}
+
+.triggerContainer{
+    display: flex;
+    width: 100%;
+}
+
+.triggerRegister{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    background-color: #182b27;
+    padding: 4%;    
+    margin: 2px;
+}
+
+.triggerLogin{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    background-color: #182b27;
+    padding: 4%;
+    margin: 2px;
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 7%;
+}
+.inputContainer input{
+    background-color: white;
+    height: 30px;
+    color: black;
+    border: none;
+    margin-top: 10px;
+    padding: 0 10px;
+   
+}
+.buttonContainer{
+    
+  
+}
+.buttonContainer input{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 35px;
+    border: none;
+    background-color: #182b27;
+    color: white;
+}
+
+.formContainer{
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 10%;
+  
+}
+
+.modalContainer{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+   
+    align-items: center;
+    height: 100%;
+}
+
+.modalWrapper{
+    padding: 10%;
+    background-color: #1d3530;
+}
+
+.errorMsg{
+    text-align: center;
+    padding-bottom: 7%;
+    color: rgb(255, 150, 150);
+    font-style: italic;
+}

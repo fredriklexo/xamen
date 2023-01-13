@@ -1,0 +1,147 @@
+//------ products ----------------
+GET http://localhost:5000/product/getAll
+
+###
+
+GET http://localhost:5000/product/getById/637b3da7fb2b329daeb80858
+###
+
+GET http://localhost:5000/product/getBySlug/veranda-blend
+###
+
+
+// --------------------------------------------------
+
+
+//---------- category ----------
+POST http://localhost:5000/category/getByCategoryId
+Content-Type: application/json
+
+{
+    "categoryId": ["dark-roast", "decaf-coffee"]
+}
+
+###
+
+GET http://localhost:5000/category/getById/decaf-coffee
+
+
+###
+
+GET http://localhost:5000/category/getAll
+
+###
+// --------------------------------------------------
+
+// --------------------- user ---------------------
+// GET
+
+GET http://localhost:5000/user/getALl
+###
+
+GET http://localhost:5000/user/getById/6368c01c7f52287b1c68fce1
+
+
+
+
+###
+PUT http://localhost:5000/user/changePassword
+Content-Type: application/json
+
+{
+    "_id": "6368c01c7f52287b1c68fce1",
+    "oldPassword": "4321",
+    "newPassword": "1234"
+}
+
+###
+DELETE http://localhost:5000/user/delete/636772b443cb7f4b386d85c7
+
+
+// --------------------------------------------------
+
+
+// ---------------------- ORDER -----------------
+###
+
+//Post
+POST http://localhost:5000/order/create
+Content-Type: application/json
+
+{
+        "customer":  {
+            "_id":"6368c01c7f52287b1c68fce1",
+            "address": ,
+            
+  
+        },
+        "delivery":{
+            "shipping": ,
+            "status": 
+        },
+        "item": [
+            { 
+                "_id": "63515da230fedc22b41e69c4",
+                "qty": 1 ,
+                "price": 123,
+                
+            }
+            
+        ]
+}
+###
+
+
+// --------------------------------------------------
+
+
+// ---------------------- CART -----------------
+
+PUT http://localhost:5000/user/test/63a81e3af2b737707a9cff49
+Content-Type: application/json
+token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTgxZTNhZjJiNzM3NzA3YTljZmY0OSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE5NjY1MTIsImV4cCI6MTY3MjIyNTcxMn0.Bd2kOr_jt0J_vYOhkyt4Toxncl0JvFtVI6tX9GF_pl0
+
+{
+    "mail": "fred@xdssdsses.se",
+    "oldPassword": "1234",
+    "newPassword": "4321"
+}
+###
+
+
+// LOGGIN USER
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "mail": "fred@mail.se",
+    "password": "1234"
+}
+
+
+###
+
+//REGISTER USER
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "firstName": "fred",
+    "lastName": "x",
+    "mail": "fred@mail.se",
+    "password": "1234",
+    "address": "gatan",
+    "zip": 43439
+}
+
+###
+//Check cookie token 
+POST http://localhost:5000/auth/cookie
+Accept: "applicaiton/json"
+Content-Type: "application/json"
+withCredentials: "true"
+credentials: "include" 
+
+{
+    "firstName": "fred"
+}

@@ -1,0 +1,35 @@
+
+.sectionContainer{
+    display: flex;
+    position: relative;
+    bottom: 0px;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1600px;
+    background-color: #182b27;
+    
+}
+
+.container{
+    width: 100%;
+    
+
+}
+.logoContainer{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.logo{
+    width: 200px;
+}
+
+.infoContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.column{
+    padding: 30px;
+}
