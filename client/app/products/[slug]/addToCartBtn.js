@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 
 async function getData(id) {
@@ -35,6 +36,8 @@ async function getData(id) {
 }
 
 export default function AddToCartBtn(props) {
+    const router = useRouter()
+
     const btnStyle = {
         border: "none",
         background: "transparent",
@@ -48,9 +51,11 @@ export default function AddToCartBtn(props) {
     
 
     const handelClick = async () => {
-        console.log("click")
-       let test =  await getData(props.productid)
-        console.log(test)
+       
+        let response = await getData(props.productid)
+        if(response.status === "notAuthorized"){
+            router.push("/login")
+        }
             
     };
 

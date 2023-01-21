@@ -28,12 +28,12 @@ async function getData(id) {
 
 
 export default async function orderSuccess(props) {
-  console.log(props.searchParams)
-  let user = await getData(props.searchParams.session_id)
-  if(user){
-    var cart = JSON.parse(user.metadata.cart)
-  }
-  console.log(cart.items)
+  // console.log(props.searchParams)
+  // let user = await getData(props.searchParams.session_id)
+  // if(user){
+  //   var cart = JSON.parse(user.metadata.cart)
+  // }
+  // console.log(cart.items)
  
 
   return(
@@ -48,7 +48,7 @@ export default async function orderSuccess(props) {
           <p>{item.price}</p>
         </div>
       })} */}
-      <p>{cart.bill}</p>
+      {/* <p>{cart.bill}</p> */}
       </div>
       
     </div>

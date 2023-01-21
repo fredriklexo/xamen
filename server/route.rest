@@ -39,9 +39,6 @@ GET http://localhost:5000/category/getAll
 GET http://localhost:5000/user/getALl
 ###
 
-GET http://localhost:5000/user/getById/6368c01c7f52287b1c68fce1
-
-
 
 
 ###
@@ -110,7 +107,7 @@ token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTgxZTNhZjJiNzM3N
 
 
 // LOGGIN USER
-POST http://localhost:5000/auth/login
+POST http://localhost:5000/user/login
 Content-Type: application/json
 
 {

@@ -9,7 +9,7 @@ import * as dotenv from 'dotenv';
 import Cart from '../model/Cart.js'
 
 
-const saltRounds = 10;
+const saltRounds = dotenv.config().parsed.SALT_KEY
 const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
 
 
@@ -19,13 +19,16 @@ const router = express.Router()
 
 const createNewOrder = async (customer,data) => {
   const item = JSON.parse(customer.metadata.cart)
+  // let test = await stripe.checkout.sessions.listLineItems(data.id);
+  let test = await Cart.findById(item)
+  
   const newOrder = new Order({
     userId: customer.metadata.userId,
     customerId: data.customer,
     paymentIntentId: data.payment_intent,
-    product: item,
-    subTotal: data.amount_subtotal,
-    total: data.amount_total,
+    product: test.items,
+    subTotal: data.amount_subtotal / 100,
+    total: data.amount_total / 100,
     shipping: data.customer_details,
     payment_status: data.payment_status,
   })

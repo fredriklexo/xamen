@@ -1,105 +1,63 @@
 import express from 'express'
 import Order from '../model/Orders.js'
-import User from '../model/User.js';
-import Product from '../model/Product.js'
 import Cart from '../model/Cart.js'
 import Stripe from 'stripe'
-import bcrypt from "bcrypt"
 import { verifyToken } from './verifyToken.js';
-const YOUR_DOMAIN = 'http://localhost:3000';
-
-const saltRounds = 10;
+import * as dotenv from 'dotenv';
 
 
 const router = express.Router()
-const stripe = new Stripe("sk_test_51MItJtGqWkaNAgB8Kq08bFqoRccl2Y2Fjh2y452740Dhd44HB5lBvjSeMU810SsDaWaJUQ5jtlJwPxTsDZsPRW7Q00oKsdXXga");
+const YOUR_DOMAIN = dotenv.config().parsed.CLIENT_URL
+const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
+
 // ----------------- GET -------------------------
-//Get all users
-
-router.post('/create', async (req,res) => {
-    
-    
-    try {
-        const { item, customer} = req.body;
-
-        let test = await Promise.all(item.map( async (productItem) =>{ 
-
-            let findItem = await Product.find({ _id: { $in: productItem._id } });
-            let findUser = await User.find( {_id: customer.id})
 
 
-            
-               
-
-            const newOrder =  new Order({
-                customer:  {
-                    id: findUser._id,
-                    name: findUser.firstName + findUser.lastName
-                },
-                item: {
-                        product: {
-                            
-                        }, 
-                    
-                        qty: item.qty
-                    }
-                    
-            })    
-
-            
-        }));
-       
-
-
-
-        // let ids = item.map(function (obj){ return obj._id });
-        // console.log(ids)
-
-
-        // let findItem = await Product.find({ _id: { $in: ids } });
-
-        // let findCustomer = await User.find({ _id: customer.id});
-        
-        // const newOrder =  new Order({
-        //     customer:  {
-        //         id: findCustomer._id,
-        //         name: findCustomer.firstName + findCustomer.lastName
-        //     },
-        //     item: {
-        //         product: {findItem, qty: item.qty},
-                
-        //     },
-            
-        // })
-
-        // res.json(newOrder)
-        // newOrder.save()
-        // console.log(newOrder)
-        
-        
-    } catch (error) {
-        res.status(404).json({message: error.message})
-    }
-
-})
 //get all users order 
-router.get('/orders', verifyToken, async (req, res) => {
-    const owner = req.user._id;
+
+router.get('/getOrderById/:id', verifyToken, async (req, res) => {
+    const orderId = req.params.id;
+    console.log(orderId)
     try {
-        const order = await Order.find({ owner: owner }).sort({ date: -1 });
-        if(order) {
-            return res.status(200).send(order)
+        const order = await Order.findById( orderId );
+        console.log(orderId)
+        if(order.length === 0){
+            return res.status(404).json({message:"No order found", status:"fail"})
         }
-        res.status(404).send('No orders found')
+        if(order) {
+            return res.status(200).json({status:"success",data:order})
+        }else{
+
+            res.status(404).json({message:"No order found", status:"fail"})
+        }
     } catch (error) {
-        res.status(500).send()
+        res.status(500).json({message: error.message, status:"fail"})
+    }
+})
+router.get('/getUserOrder', verifyToken, async (req, res) => {
+    const owner = req.user.id;
+    console.log("OWENER::",owner)
+    try {
+        const order = await Order.find({ userId: owner }).sort({ date: -1 });
+        
+        if(order.length === 0){
+            return res.status(404).json({message:"No order found", status:"fail"})
+        }
+        if(order) {
+            return res.status(200).json({status:"success",data:order})
+        }else{
+
+            res.status(404).json({message:"No order found", status:"fail"})
+        }
+    } catch (error) {
+        res.status(500).json({message: error.message, status:"fail"})
     }
 })
 
 //checkout prossece and save order in mongodb
 router.post('/create-checkout-session', verifyToken, async(req, res) => {
     try {
-        console.log("hej")
+        
         const owner = req.user.id;
         let payload = req.body
        
@@ -109,10 +67,10 @@ router.post('/create-checkout-session', verifyToken, async(req, res) => {
         const stripeCustumer = await stripe.customers.create({
             metadata:{
                 userId: owner,
-                cart: JSON.stringify(cart)
+                cart: JSON.stringify(cart._id)
             }
         })
-        console.log("stripeCustumer: ",stripeCustumer)
+      
         if(cart) {
             const session = await stripe.checkout.sessions.create({
                 shipping_address_collection: {allowed_countries: ['SE', 'NO']},
@@ -136,11 +94,10 @@ router.post('/create-checkout-session', verifyToken, async(req, res) => {
                                 currency: 'sek',
                                 product_data: {
                                     name: item.name,
-                                    images: [item.src],
                                     description: item.description,
                                     metadata: {
                                         id: item.id,
-                                        
+                                      
                                     }
                                 },
                                 unit_amount: item.price * 100,
@@ -170,13 +127,6 @@ router.post('/create-checkout-session', verifyToken, async(req, res) => {
 })
 
 
-// router.get('/success', async (req, res) => {
-//     console.log("---------------> ",req.body)
-//     const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-//     const customer = await stripe.customers.retrieve(session.customer);
-  
-//     res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
-//   });
 
 export default router
 

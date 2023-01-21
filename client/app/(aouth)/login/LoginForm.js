@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 
 async function validateUser(name, pass) {
-    const res = await fetch("http://localhost:5000/auth/login", { 
+    const res = await fetch("http://localhost:5000/user/login", { 
     method: 'POST',
     headers: {
         Accept: "applicaiton/json",
@@ -64,7 +64,7 @@ export default  function LoginForm() {
  
       
 
-        <form className={styles.formContainer} onSubmit={handleSubmit} >
+        <form className={styles.formContainer } onSubmit={handleSubmit} >
 
             <div className={styles.inputContainer}>
                 <label>E-mailadres:</label>
@@ -77,7 +77,7 @@ export default  function LoginForm() {
             </div>
             <p className={styles.errorMsg} >{errorMsg}</p>
             <div className={styles.buttonContainer}>
-                <input type="submit" value="Loggin" />
+                <input className={"primaryColor"} type="submit" value="Loggin" />
             </div>
         </form>
 

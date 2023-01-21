@@ -1,13 +1,7 @@
 import express from 'express'
-import Order from '../model/Orders.js'
-import User from '../model/User.js';
 import Product from '../model/Product.js'
-import bcrypt from "bcrypt"
 import { verifyToken } from "../routes/verifyToken.js"
-import { serialize } from "cookie";
 import Cart from '../model/Cart.js';
-
-const saltRounds = 10;
 
 
 const router = express.Router()
@@ -15,21 +9,17 @@ const router = express.Router()
 
 router.get("/getCart", verifyToken, async (req, res) => {
   const owner = req.user.id;
-  
+
   try {
     const cart = await Cart.findOne({ owner });
-    if(cart === null){
-      console.log(cart)
-      res.send(null);
-    }
     
     if (cart && cart.items.length > 0) {
-      res.status(200).send(cart);
+      res.status(200).json({data: cart, status:"success"});
     } else {
-      res.send(null);
+      res.json({message: "Your cart is empty", status:"empty",data: false});
     }
   } catch (error) {
-    res.status(500).send();
+    res.status(500).json();
   }
 });
 
@@ -43,32 +33,28 @@ router.post("/cart", verifyToken, async (req, res) => {
     const item = await Product.findOne({ _id: itemId });
 
     if (!item) {
-      res.status(404).send({ message: "item not found" });
+      res.status(404).json({ message: "item not found" });
       return;
     }
     if (item.qty == 0) {
-      res.status(404).send({ message: "item out of stock!" });
+      res.status(404).json({ message: "item out of stock!" });
       return;
     }
     const price = item.price;
     const name = item.name;
+    const src = item.src
+
+
     //If cart already exists for user,
     if (cart) {
       const itemIndex = cart.items.findIndex((item) => item.itemId == itemId);
       //check if product exists or not
 
-      let oldproduct = cart;
-
-      // const test = await Product.findByIdAndUpdate({ _id: itemId },{qty: item.qty += product.quantity });
-      // console.log(test)
       if (itemIndex > -1) {
-        // console.log("OLD CART:  ", cart)
+
         let product = cart.items[itemIndex];
-        // console.log("cart.items[itemIndex]: ",cart.items[itemIndex])
-        console.log(quantity)
+        
         product.quantity += quantity;
-        // console.log("product.quantity : ",product.quantity)
-        // console.log("oldproduct.quantity : ",oldproduct)
         if (quantity === 1) {
           await Product.findByIdAndUpdate({ _id: itemId }, { $inc: { qty: -1 } });
         } else {
@@ -81,32 +67,32 @@ router.post("/cart", verifyToken, async (req, res) => {
 
         cart.items[itemIndex] = product;
         await cart.save();
-        res.status(200).send(cart);
+        res.status(200).json({data: cart, status:"success"});
       } else {
-        let testing = await Product.findByIdAndUpdate({ _id: itemId }, { $inc: { qty: -1 } });
-        console.log(testing)
-        cart.items.push({ itemId, name, quantity, price });
+        await Product.findByIdAndUpdate({ _id: itemId }, { $inc: { qty: -1 } });
+
+        cart.items.push({ itemId, name, quantity, price, src });
         cart.bill = cart.items.reduce((acc, curr) => {
           return acc + curr.quantity * curr.price;
         }, 0)
 
         await cart.save();
-        res.status(200).send(cart);
+        res.status(200).json({data: cart, status:"success"});
       }
     } else {
       //no cart exists, create one
       const newCart = await Cart.create({
         owner,
-        items: [{ itemId, name, quantity, price }],
+        items: [{ itemId, name, quantity, price, src }],
         bill: quantity * price,
       });
-      console.log(newCart.items[0].itemId)
-      // await Product.findByIdAndUpdate({ _id: newCart.items[0].itemId }, { $inc: { qty: -1 } });
-      return res.status(201).send(newCart);
+
+      await Product.findByIdAndUpdate({ _id: newCart.items[0].itemId }, { $inc: { qty: -1 } });
+      return res.status(201).json({data: newCart, status:"success"});
     }
   } catch (error) {
     console.log(error);
-    res.status(500).send("something went wrong");
+    res.status(500).json({message: "something went wrong!", status:"fail",data: false});
   }
 });
 
@@ -117,7 +103,7 @@ router.delete("/deleteItem", verifyToken, async (req, res) => {
   const itemId = req.body.itemId;
   try {
     let cart = await Cart.findOne({ owner });
-    
+
     const itemIndex = cart.items.findIndex((item) => item.itemId == itemId);
 
     if (itemIndex > -1) {
@@ -130,18 +116,25 @@ router.delete("/deleteItem", verifyToken, async (req, res) => {
       cart.bill = cart.items.reduce((acc, curr) => {
         return acc + curr.quantity * curr.price;
       }, 0)
-      console.log("item.itemId", item.itemId)
-      console.log("item.quantity", item.quantity)
-      let testing = await Product.findByIdAndUpdate({ _id: itemId }, { $inc: { qty: + item.quantity  } });
-      console.log("testing", testing)
-      cart = await cart.save();
-      res.status(200).send(cart);
+
+      await Product.findByIdAndUpdate({ _id: itemId }, { $inc: { qty: + item.quantity } });
+      
+      if(cart.items.length === 0){
+        cart = await Cart.findOneAndRemove({ owner });
+        res.status(200).json({data: false, status: "success"});
+      }else{
+        cart = await cart.save();
+        res.status(200).json({data: cart, status: "success"});
+      }
+    
+      
+     
     } else {
-      res.status(404).send("item not found");
+      res.status(404).json({message: "item not found", status:"fail",data: false})
     }
   } catch (error) {
     console.log(error);
-    res.status(400).send();
+    res.status(400).json();
   }
 });
 

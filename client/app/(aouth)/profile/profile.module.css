@@ -1,0 +1,108 @@
+.container{
+    min-height: 100vh;
+    padding-top: 50px;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+.navContainer{
+    width: 300px;
+
+}
+.navWrapper{
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 2px;
+}
+
+.welcomeContainer{
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.392);
+    margin: 0 10px;
+    padding: 20px 0;
+    align-items: center;
+}
+.welcomeContainer img{
+    width: 80px;
+    height: 80px;
+}
+.welcomeItem h2{
+    font-size: 30px;
+}
+.welcomeItem h3{
+    font-size: 20px;
+    
+}
+.profileContainer{
+    margin: 0 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.392);
+}
+.helpContainer{
+    margin: 10px;
+    padding: 20px 0;
+}
+.item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.item img{
+    width: 25px;
+    height: 25px;
+    display: flex;
+}
+.item p{
+   
+    display: flex;
+}
+
+
+
+/* ------------- CONTENT STYLING ------------- */
+
+.contentContainer{
+    display: flex;
+    justify-content: center;
+    width: 600px;
+}
+.contentWrapper{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.profileImg{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+.contentText{
+    position: absolute;
+    z-index: 9;
+    top: 40px;
+    left: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+    .contentContainer{
+   
+        width: 100%;
+    }
+    .navContainer{
+        width: 100%;
+    
+    }
+  }

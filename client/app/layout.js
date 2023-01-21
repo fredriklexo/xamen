@@ -3,7 +3,7 @@
 import MainNavigation from './components/navigation/mainNavigation.js'
 import Footer from './components/navigation/footer/footer.js'
 import './globals.css'
-
+import style from "./mainLayout.module.css"
 
 
 
@@ -20,13 +20,16 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <nav style={{ backgroundColor: "#182b27", display: "flex" }}>
+        <nav style={{ boxShadow: "0 2px 2px -2px rgba(0,0,0,.5)", display: "flex" }}  >
           <MainNavigation />
         </nav>
-        <main>
+        <main className={style.mainContainer}>
           {children}
         </main>
-        <Footer />
+        <div style={{ display: "flex" }} className="thirdColor">
+
+          <Footer />
+        </div>
 
       </body>
     </html>

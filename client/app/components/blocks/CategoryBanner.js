@@ -1,6 +1,6 @@
 
 import styleModule from "./CategoryBanner.module.css"
-
+import Link from "next/link";
 
 async function getData() {
     const res = await fetch('http://localhost:5000/category/getAll');
@@ -28,16 +28,19 @@ async function CategoryBanner(){
                     {data.map((obj) => {
                 
                         return( 
-                            <div key={obj._id} className={styleModule.item} >
+                            <Link key={obj.categoryId} className={styleModule.item} href={{ pathname: "products", query: { category: obj.categoryId } }}>
+                            
                                 <img src={obj.src} className={styleModule.image} />
                                 <div className={styleModule.itemTextContainer}>
                                     <h4>{ obj.name }</h4>
                                     <p>this is a MEGA SUPER category</p>
                                 </div>
-                            </div>
+                            
+                            </Link>
                         )
                     })}
-                   
+                                       
+                                      
                     
                 </div>
                 

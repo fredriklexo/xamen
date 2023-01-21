@@ -2,20 +2,28 @@
 'use client'
 import styles from "./loginModal.module.css"
 import {useEffect, useState} from "react"
+import { useRouter } from 'next/navigation';
 
-async function validateUser(name, pass) {
-    const res = await fetch("http://localhost:5000/user/login", { 
+async function validateUser(mail,fname,lname,address,zip,password) {
+    const res = await fetch("http://localhost:5000/user/register", { 
     method: 'POST',
-    
     headers: {
-      'Content-Type': 'application/json'  
+        Accept: "applicaiton/json",
+        "Content-Type": "application/json",
     },
     body: JSON.stringify(
         {  
-            mail: name,
-            password: pass 
+            firstName: fname,
+            lastName: lname,
+            mail: mail,
+            address: address,
+            zip: zip,
+            password: password,
+             
         }
-    )
+    ),
+    withCredentials: true, // should be there
+    credentials: 'include' // should be there
     });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
@@ -28,18 +36,30 @@ async function validateUser(name, pass) {
     
     return  res.json();
 }
-const handleSubmit = async (event) => {
-    // Prevent page reload
-    event.preventDefault();
-    var { mail, pass } = document.forms[0];
-    console.log(mail.value)
-    let test = await validateUser(mail.value, pass.value)
-    console.log(test)
-  };
+
 
 export default  function RegisterForm() {
-   
-   
+    let router = useRouter()
+
+    const [errorMsg, setErrorMsg] = useState();
+
+    const handleSubmit = async (event) => {
+        // Prevent page reload
+        event.preventDefault();
+        let {mail,fname,lname,address,zip,password,confirm} = event.target
+        if(password.value === confirm.value){
+            let newUser = await validateUser(mail.value,fname.value,lname.value,address.value,zip.value,password.value) 
+            console.log(newUser.accessToken)
+            if(newUser.accessToken){
+                router.refresh()
+                router.push("/")
+            }else{
+                setErrorMsg("* incorrect email or password")
+            }
+        }
+        // let test = await validateUser()
+        
+    };
   return (
   
   <form className={styles.formContainer} onSubmit={handleSubmit}>
@@ -63,7 +83,7 @@ export default  function RegisterForm() {
           <input type="text" name="address" required />            
       </div>
       <div className={styles.inputContainer}>
-          <label>Adress:</label>
+          <label>Zip-code:</label>
           <input type="text" name="zip" required />            
       </div>
 
@@ -77,7 +97,7 @@ export default  function RegisterForm() {
       </div>
       
       <div className={styles.buttonContainer}>
-          <input type="submit" />
+          <input className={"primaryColor"} type="submit" />
       </div>
   </form>
 

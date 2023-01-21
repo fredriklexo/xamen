@@ -5,19 +5,6 @@ const ObjectID = mongoose.Schema.Types.ObjectId
 
 const cartSchema = new Schema({
 
-    
-    //     userId: {type: String, requierd: true},
-    //     product: [
-    //         {
-    //             productId: {type: String},
-    //             qty: {type: Number, default: 1}
-    //         }
-    //     ]
-    // },
-    // {timestamps: true}
-
-
-
     owner : {
         type: ObjectID,
          required: true,
@@ -29,14 +16,17 @@ const cartSchema = new Schema({
          ref: 'Item',
          required: true
       },
-      name: String,
+      name: {type: String, required: true},
+      src: {type: String, required: true},
       quantity: {
          type: Number,
          required: true,
          min: 1,
          default: 1},
          price: Number
-       }],
+       }
+      
+      ],
       bill: {
           type: Number,
           required: true,

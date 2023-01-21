@@ -1,43 +1,29 @@
 .sectionContainer{
-    display:"flex";
-    width:100%;
-    height:100%;
-    
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
 }
 
 .container{
-    display: flex;
-    width: 100%;
-    max-width: 1600px;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
     justify-content: center;
+    margin-top: 30px;
+   
     
 
 }
-.wrapper{
-    width: 60%;
-    background-color: #182c279c;
-    
-}
+
 .wrapper h1{
     text-align: center;
 }
 
 .cartContainer{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    
 }
 
 
-
-.checkoutContainer{
-   
-    flex: 1;
-    display: flex;
-    justify-content: center;
-   
-}
 .checkoutWrapper{
     
     position: sticky;

@@ -3,15 +3,15 @@ const { Schema, model } = mongoose
 
 
 const productSchema = new Schema({
-        name: String,
-        categoryId: Array,
-        description: String,
-        features: String,
-        price: Number,
-        slug: String,
-        image:{type:String},
+        name: {type: String, require: true},
+        categoryId: {type: Array, require: true},
+        description: {type:String, require: true},
+        features: {type: String, require: true},
+        price: {type: Number, require: true},
+        slug: {type: String, require: true},
+        src:{type:String, require: true},
         qty:  {type: Number,required:true, default:1},
-        inStock: Number
+        type: {type:String, require: true},
 },{timestamps: true})
 
 const Product = model("Product", productSchema)

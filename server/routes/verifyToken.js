@@ -19,7 +19,7 @@ const verifyToken = (req, res, next) => {
         });
 
     } else {
-      return res.status(403).json("You is missing form headers!");
+      return res.status(403).json({status:"notAuthorized"});
     }
   };
   

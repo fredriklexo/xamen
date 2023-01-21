@@ -24,15 +24,21 @@ async function MainNavigation(){
 
             <div className={style.subMenu}>
                 <Link href="/" >Home</Link>
-                <Link href="/cart" >Cart</Link>
+                <Link href="/cart" ><img src="/icons/coffee.svg"></img></Link>
             </div>
 
             <div className={style.right}>
 
                 
                 
-               { (userIsValidated) ? <LoginOrLogut token={"hej"} /> :  <Link href="/login">Login </Link> }
-                <Link href="/cart">Cart</Link>
+               { (userIsValidated) ? 
+               <>
+               <LoginOrLogut token={"hej"} /> 
+               <Link href="/profile" ><img className={style.icon} src="/icons/person.svg"></img></Link>
+               </>
+               :  <Link href="/login">Login </Link> }
+               
+               <Link href="/cart" ><img className={style.icon} src="/icons/coffee.svg"></img></Link>
             </div>
         </nav>
 

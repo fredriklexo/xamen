@@ -1,24 +1,47 @@
-.loginContainer{
+.modalContainer{
+    
     width: 100vw;
     height: 100vh;
-    background-color: #182b27;
     position: absolute;
     top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     z-index: 999;
+}
+
+.modalWrapper{
+    display: flex;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+   
+    align-items: center;
+    height: 100%;
+
+
+
     
 }
 
+
+
+
 .loginWrapper{
-   
-    display: flex;
+    padding: 10%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 5px;
+
     
 }
 .logoLink{
     display: flex;
     justify-content: center;
     margin: 50px 50px 50px 50px;
+    
 }
 .logo{
     max-width: 300px;
@@ -34,16 +57,17 @@
     display: flex;
     justify-content: center;
     width: 50%;
-    background-color: #182b27;
+   
     padding: 4%;    
     margin: 2px;
+    
 }
 
 .triggerLogin{
     display: flex;
     justify-content: center;
     width: 50%;
-    background-color: #182b27;
+    
     padding: 4%;
     margin: 2px;
 }
@@ -73,7 +97,7 @@
     justify-content: center;
     height: 35px;
     border: none;
-    background-color: #182b27;
+
     color: white;
 }
 
@@ -85,21 +109,6 @@
   margin: 0 auto;
   margin-top: 10%;
   
-}
-
-.modalContainer{
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: center;
-   
-    align-items: center;
-    height: 100%;
-}
-
-.modalWrapper{
-    padding: 10%;
-    background-color: #1d3530;
 }
 
 .errorMsg{

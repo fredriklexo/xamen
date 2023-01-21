@@ -7,7 +7,7 @@
     margin: 0 auto;
     height: 90px;
     max-width: 1600px;
-    background-color: #182b27;
+    
    
 }
 
@@ -44,8 +44,12 @@
     justify-content: flex-end;
     flex-wrap: wrap;
     gap:20px;
+    align-items: center;
 }
-
+.icon{
+    width: 25px;
+    height: 25px;
+}
 .logo{
     width: 200px;
 }

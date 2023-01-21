@@ -1,5 +1,5 @@
 // import styleModule from "../[slug]/product.module.css"
-import styleModule from "./product.module.css"
+import styleModule from "../[slug]/product.module.css"
 import AddToCartBtn from "../[slug]/addToCartBtn.js"
 
 

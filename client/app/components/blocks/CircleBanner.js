@@ -21,12 +21,17 @@ async function getData() {
 async function CircleBanner() {
     
     let  data  =  await getData();
+
+   
     
     return (
         <section className={styleModule.container} >
             <div className={styleModule.wrapper} >
                 <div className={styleModule.itemContainer}>
-                    <div className={styleModule.itemWrapper}>
+
+                
+
+             <div className={styleModule.itemWrapper}>
                         <div className={styleModule.itemOne}>
 
                             <div className={styleModule.imageContainer}>
@@ -37,10 +42,11 @@ async function CircleBanner() {
                             <div className={styleModule.textContainer}>
                                 <h3>{data[0].name}</h3>
                                 <p>{data[0].description}</p>
+                                <Link className={styleModule.productLink} href={{ pathname: "products/" + data[0].slug }}>Put me in your basket.. wink wink</Link>
                             </div>
                         </div>
                         
-                    </div>
+                    </div> 
 
                 </div>
 
