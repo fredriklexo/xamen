@@ -6,7 +6,7 @@ import {verifyToken} from './verifyToken.js';
 import { serialize } from "cookie";
 import * as dotenv from 'dotenv';
 
-const saltRounds = dotenv.config().parsed.SALT_KEY
+const saltRounds = process.env.SALT_KEY
 
 
 const router = express.Router()

@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 import {verifyToken, verifyTokenAndAuthorization} from './verifyToken.js';
 import { serialize } from "cookie";
 import * as dotenv from 'dotenv';
-const saltRounds = parseInt(dotenv.config().parsed.SALT_KEY)
+const saltRounds = parseInt(process.env.SALT_KEY)
 
 
 const router = express.Router()

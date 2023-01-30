@@ -14,7 +14,7 @@ import cp from "cookie-parser"
 
 const app = express()
 
-mongoose.connect(dotenv.config().parsed.DB_CONNECTION, {useNewUrlParser: true})
+mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true})
 const db =  mongoose.connection.getClient("store")
 
 db.on('error', (error) => console.error(error))

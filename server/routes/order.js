@@ -7,8 +7,8 @@ import * as dotenv from 'dotenv';
 
 
 const router = express.Router()
-const YOUR_DOMAIN = dotenv.config().parsed.CLIENT_URL
-const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
+const YOUR_DOMAIN = process.env.CLIENT_URL
+const stripe = new Stripe(process.env.STRIPE_KEY);
 
 // ----------------- GET -------------------------
 
