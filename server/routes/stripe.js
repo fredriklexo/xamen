@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 import Cart from '../model/Cart.js'
 
 
-const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
+const stripe = new Stripe(process.env.STRIPE_KEY);
 
 
 const router = express.Router()
