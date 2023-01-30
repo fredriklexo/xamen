@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
         
                                 const serialised = serialize("accessToken", accessToken, {
                                     httpOnly: true,
-                                    secure: false,
+                                    secure: true,
                                     maxAge: 60 * 60 * 24 * 3,
                                     path: "/",
                                   });
@@ -115,7 +115,7 @@ router.post('/login', async (req, res) => {
 
                         const serialised = serialize("accessToken", accessToken, {
                             httpOnly: true,
-                            secure: false,
+                            secure: true,
                             maxAge: 60 * 60 * 24 * 3,
                             path: "/",
                           });
