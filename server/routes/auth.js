@@ -72,6 +72,24 @@ router.post('/cookieRemove', verifyToken, async (req, res) => {
 })
 
 
+router.get('/cookie/verifyTooken', verifyToken, async (req, res) => {
+
+    try {
+        
+        const findUser = await User.findById( req.user.id )
+        if(findUser){
+            const {password, ...other} = findUser._doc
+           
+            res.status(200).json({ data: other , status: "success" })
+        }else{
+            res.status(404).json({ message: "user not found!" })
+        }
+
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+
+})
 
 router.get('/getUser/details', verifyToken, async (req, res) => {
 

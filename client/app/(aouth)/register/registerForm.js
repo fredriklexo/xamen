@@ -4,7 +4,7 @@ import styles from "./loginModal.module.css"
 import {useEffect, useState} from "react"
 import { useRouter } from 'next/navigation';
 
-async function validateUser(mail,fname,lname,address,zip,password) {
+async function validateUser(mail,fname,lname,address,zip,pw) {
     const res = await fetch("http://localhost:5000/user/register", { 
     method: 'POST',
     headers: {
@@ -18,7 +18,7 @@ async function validateUser(mail,fname,lname,address,zip,password) {
             mail: mail,
             address: address,
             zip: zip,
-            password: password,
+            password: pw,
              
         }
     ),
@@ -31,7 +31,7 @@ async function validateUser(mail,fname,lname,address,zip,password) {
     // Recommendation: handle errors
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data');
+     
     }
     
     return  res.json();

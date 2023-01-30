@@ -56,7 +56,7 @@ export default function myOrder({ }) {
 
     return (
         <div className={styles.contentContainer }>
-            <h1 className={styles.header}>MY ORDER</h1>
+            <h1 className={styles.header}>My order</h1>
         
             {(orders) ?orders.map(order => {
                 let test = order.product.length
@@ -72,7 +72,7 @@ export default function myOrder({ }) {
                                         return (
                                            
                                             <Link key={item._id}  href={`profile/my-order/${order._id}`}>
-                                                <img className={styles.img} src={item.src} />
+                                                <img alt={item.name}className={styles.img} src={item.src} />
                                             </Link>
                                            
                                         )

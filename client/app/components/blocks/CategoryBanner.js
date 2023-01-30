@@ -30,10 +30,10 @@ async function CategoryBanner(){
                         return( 
                             <Link key={obj.categoryId} className={styleModule.item} href={{ pathname: "products", query: { category: obj.categoryId } }}>
                             
-                                <img src={obj.src} className={styleModule.image} />
+                                <img alt={obj.name} src={obj.src} className={styleModule.image} />
                                 <div className={styleModule.itemTextContainer}>
                                     <h4>{ obj.name }</h4>
-                                    <p>this is a MEGA SUPER category</p>
+                                    
                                 </div>
                             
                             </Link>

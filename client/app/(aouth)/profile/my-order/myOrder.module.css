@@ -1,5 +1,6 @@
 .contentContainer{
     background-color:   #12211e;  
+    margin-bottom: 100px;
 }
 .header{
     border-bottom: solid 10px #12211e;
@@ -28,6 +29,7 @@
     align-items: center;
     padding: 20px 0;
     border-bottom: solid rgba(255, 255, 255, 0.3) 1px;
+    flex-wrap: wrap;
 }
 
 
@@ -59,8 +61,12 @@
     margin: 2px;
     
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
+    .contentContainer{
+       width: 100vw;
+   
+    }
     .orderContainer{
-       width: 100%;
+        width: 100%;
     }
   }

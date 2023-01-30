@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 import {verifyToken, verifyTokenAndAuthorization} from './verifyToken.js';
 import { serialize } from "cookie";
 import * as dotenv from 'dotenv';
-const saltRounds = dotenv.config().parsed.SALT_KEY
+const saltRounds = parseInt(dotenv.config().parsed.SALT_KEY)
 
 
 const router = express.Router()
@@ -15,22 +15,24 @@ const router = express.Router()
 router.post('/register', async (req, res) => {
 
     try {
-        console.log("REQ.BODY :",req.body)
+        
         const user = await User.find({ mail: req.body.mail })
-        console.log("Register user:",user)
+       
         if(!user[0] ){
             
             bcrypt.genSalt(saltRounds, function (err, salt) {
+                
                 bcrypt.hash(req.body.password, salt, function (err, hash) {
-    
+                   
                     const newUser = new User({
-                        
+                    
+
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,
-                        mail: req.body.mail,
                         address: req.body.address,
+                        mail: req.body.mail,
+                        password: hash,
                         zip: req.body.zip,
-                        password: hash
                     })
                     
                     newUser.save()
@@ -75,6 +77,8 @@ router.post('/register', async (req, res) => {
                     });
                 });
             });
+        }else{
+            res.status(400).json("Det här suger");
         }
         
 

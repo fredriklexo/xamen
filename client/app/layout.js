@@ -4,7 +4,8 @@ import MainNavigation from './components/navigation/mainNavigation.js'
 import Footer from './components/navigation/footer/footer.js'
 import './globals.css'
 import style from "./mainLayout.module.css"
-
+import Loading from './loading.js';
+import { Suspense } from "react";
 
 
 export default function RootLayout({ children }) {
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
           <MainNavigation />
         </nav>
         <main className={style.mainContainer}>
-          {children}
+          <Suspense fallback={<Loading />}>
+              {children}
+          </Suspense>
         </main>
         <div style={{ display: "flex" }} className="thirdColor">
 

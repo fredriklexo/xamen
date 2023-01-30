@@ -1,15 +1,10 @@
 import express from 'express'
 import Stripe from 'stripe'
 import Order from '../model/Orders.js'
-import bodyParser from "body-parser"
-import User from '../model/User.js'
-import bcrypt from "bcrypt"
-import {verifyTokenAndAuthorization} from './verifyToken.js';
 import * as dotenv from 'dotenv';
 import Cart from '../model/Cart.js'
 
 
-const saltRounds = dotenv.config().parsed.SALT_KEY
 const stripe = new Stripe(dotenv.config().parsed.STRIPE_KEY);
 
 
@@ -87,8 +82,9 @@ router.post('/webhook', express.raw({type: 'application/json'}), async (request,
 
 router.post('/order/success', async (req, res) => {
   try {
-    const session = await stripe.checkout.sessions.retrieve(req.body.userId);
-  const customer = await stripe.customers.retrieve(session.customer);
+    const session = await stripe.checkout.sessions.retrieve(req.body.sessionId);
+    console.log("session",session)
+    const customer = await stripe.customers.retrieve(session.customer);
 
   // res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
   res.status(200).json(customer)

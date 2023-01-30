@@ -7,7 +7,7 @@ export default async function Login({ children }) {
     return (
         <div className={styles.contentContainer}>
             <div className={styles.contentWrapper}>
-                <img className={styles.profileImg} src="/banners/profile-banner2.jpg"></img>
+                <img alt="profile banner2" className={styles.profileImg} src="/banners/profile-banner2.jpg"></img>
                 <div className={styles.contentText}>
                     <h1>Welcome</h1>
                     <h2>To your profile page</h2>

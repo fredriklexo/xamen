@@ -96,13 +96,32 @@
     left: 40px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
+    
     .contentContainer{
    
         width: 100%;
     }
     .navContainer{
         width: 100%;
+    
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .wrapper{
+        flex-direction: column-reverse;
+    }
+    .container{
+        padding-top:0px;
+    }
+    .contentContainer{
+        width: 100vw !important;    
+        
+    }
+    .navContainer{
+        width: 100vw !important; 
+        margin-bottom: 80px;
     
     }
   }

@@ -2,6 +2,135 @@
     
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+}
+
+.loginContainer{
+   
+    position: absolute;
+    display: flex;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+    
+}
+
+
+
+
+.loginWrapper{
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 5px;
+
+    
+}
+.logoLink{
+  
+    
+}
+.logo{
+    max-width: 300px;
+    width: 100%;
+    padding: 10px;
+}
+
+.triggerContainer{
+    display: flex;
+    width: 100%;
+}
+
+.triggerRegister{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+   
+    padding: 10px;    
+    margin: 2px;
+    
+}
+
+.triggerLogin{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    
+    padding: 10px;
+    margin: 2px;
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 7%;
+}
+.inputContainer input{
+    background-color: white;
+    height: 30px;
+    color: black;
+    border: none;
+    margin-top: 10px;
+    padding: 0 10px;
+   
+}
+.buttonContainer{
+    
+  
+}
+.buttonContainer input{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 35px;
+    border: none;
+
+    color: white;
+}
+
+.formContainer{
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 10%;
+  
+}
+
+.errorMsg{
+    text-align: center;
+    padding-bottom: 7%;
+    color: rgb(255, 150, 150);
+    font-style: italic;
+}
+
+@media only screen and (max-width: 1000px) {
+    .contentContainer{
+     
+    }
+    .loginWrapper{
+        padding: 20px;
+    }
+  }
+
+
+
+
+
+
+
+  /* .modalContainer{
+    
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -116,4 +245,4 @@
     padding-bottom: 7%;
     color: rgb(255, 150, 150);
     font-style: italic;
-}
+} */

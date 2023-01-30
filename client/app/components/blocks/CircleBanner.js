@@ -35,8 +35,8 @@ async function CircleBanner() {
                         <div className={styleModule.itemOne}>
 
                             <div className={styleModule.imageContainer}>
-                                <img src="/blurb.svg" className={styleModule.imageOne} ></img>
-                                <img src={data[0].src} className={styleModule.imageTwo} ></img>
+                                <img alt="blob img" src="/blurb.svg" className={styleModule.imageOne} ></img>
+                                <img alt={data[0].name} src={data[0].src} className={styleModule.imageTwo} ></img>
                             </div>
 
                             <div className={styleModule.textContainer}>

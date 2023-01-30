@@ -10,7 +10,7 @@ export default async function Login({children}) {
       
     <div className={styles.loginContainer}>
       <div className={styles.loginWrapper + " secondaryColor"}>
-        <Link className={styles.logoLink} href="/"><img className={styles.logo} src="/logoWhiteText.png" /></Link>
+        <Link className={styles.logoLink} href="/"><img alt="logo white text" className={styles.logo} src="/logoWhiteText.png" /></Link>
         <div className={styles.triggerContainer}>
           <Link href="/register" className={styles.triggerRegister + " primaryColor"}>
             <h5>Register</h5>

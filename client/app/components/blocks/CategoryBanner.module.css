@@ -99,5 +99,10 @@
 
 
 @media only screen and (max-width: 1000px) {
-  
+    .itemContainer:before{
+        content:none;
+    }
+    .itemContainer::after{
+        content:none;
+    }
 }

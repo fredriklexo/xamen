@@ -31,6 +31,7 @@ async function getDatas() {
 }
 
 export default function LoginOrLogut() {
+    
     const btnStyle = {
         border: "none",
         background: "transparent",
@@ -44,7 +45,10 @@ export default function LoginOrLogut() {
     const handleLogout = async () => {
         await getDatas()
         router.refresh()
+        const toggleNavbar = document.getElementById("mobileNavigation")
+        toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
         router.push("/")
+        
             
     };
 
@@ -52,7 +56,7 @@ export default function LoginOrLogut() {
 
     return (
   
-        <button style={btnStyle}  onClick={handleLogout}>Logout</button>
+        <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button>
        
     );
     

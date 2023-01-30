@@ -26,13 +26,16 @@ export default async function ShopNavigation() {
             <div className={styles.container} >
                 <div className={styles.wrapper} >
                     <div className={styles.itemContainer} >
-                        <Link className={styles.productLink} href={{ pathname: "products" }}>All Product</Link>
+                        <Link className={styles.productLink} href={{ pathname: "products" }}>
+                            <img alt="coffee benas icon" style={{ width: "30px" }} src="/product/icons-coffee-beans.png"></img>
+                            <h2>All Products</h2>
+                        </Link>
                         {categoryList.map(category => {
                             return (
                                 
                                     <Link key={category.categoryId} className={styles.productLink} href={{ pathname: "products", query: { category: category.categoryId } }}>
+                                        <img alt={category.name} style={{ width: "30px" }} src={category.featuresSrc}></img>
                                         <h2>{category.name}</h2>
-                                        <img style={{ width: "60px" }} src={category.featuresSrc}></img>
                                     </Link>
 
                                 
@@ -44,5 +47,6 @@ export default async function ShopNavigation() {
                 </div>
             </div>
         </section>
+        
     )
 }

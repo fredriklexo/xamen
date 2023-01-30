@@ -202,15 +202,15 @@ export default function Checkout() {
            
             
                 { cart.items?.map(item => {
+                    console.log(item)
                     return (
                     
                     <div key={item.itemId} className={"styleItem"}  >
-                        <img className={"styleImg"} src={item.src} ></img>
+                        <img className={"styleImg"} src={item.src}  alt={item.name} ></img>
                         
                             <div className={"styleNameContianer"}>
                                 <p>Name:</p>
                                 <div className={"styleAlign"}>
-                                    {/* <img className={styleFeaturesIcon} src="/product/icons-coffee-beans.png"></img> */}
                                     <p >{item.name}</p>
 
                                 </div>
@@ -235,7 +235,7 @@ export default function Checkout() {
                             </div>
                             <div className={"styleRemoveContianer"}>
 
-                                <img  src="/icons/trash-can-white.png" onClick={() => handelDelete(item.itemId)} className={"styleQty"}></img>
+                                <img  alt="trash can white"src="/icons/trash-can-white.png" onClick={() => handelDelete(item.itemId)} className={"styleQty"}></img>
                             </div>
                     </div>
 
@@ -264,10 +264,10 @@ export default function Checkout() {
                         <div className={"checkoutInfoContainer"}>
                             <p>We accept:</p>
                             <div >
-                                <img className={"paymentIcon"} src="/icons/payment/master.png"></img>
-                                <img className={"paymentIcon"} src="/icons/payment/visa.png"></img>
-                                <img className={"paymentIcon"} src="/icons/payment/amex.png"></img>
-                                <img className={"paymentIcon"} src="/icons/payment/unionpay.png"></img>
+                                <img alt="mastercard" className={"paymentIcon"} src="/icons/payment/master.png"></img>
+                                <img alt="visacard" className={"paymentIcon"} src="/icons/payment/visa.png"></img>
+                                <img alt="amexcard" className={"paymentIcon"} src="/icons/payment/amex.png"></img>
+                                <img alt="unionpaycard" className={"paymentIcon"} src="/icons/payment/unionpay.png"></img>
                             </div>
 
                         </div>

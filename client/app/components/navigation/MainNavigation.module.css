@@ -7,7 +7,7 @@
     margin: 0 auto;
     height: 90px;
     max-width: 1600px;
-    
+    position: relative;
    
 }
 
@@ -16,7 +16,7 @@
     flex: 1;
 }
 
-.main{
+.middel{
     flex: 2;
     width: 100%;
     display: flex;
@@ -25,14 +25,14 @@
     align-items: center;
   
 }
-.main a{
+.middel a{
     display: flex;
     padding: 0 15px;
     height: 100%;
     align-items: center;
 }
 
-.main a:hover {
+.middel a:hover {
     color: orange;
 }
 
@@ -51,11 +51,22 @@
     height: 25px;
 }
 .logo{
-    width: 200px;
+    height: 100%;
+    width: 100%;
+    max-width: 200px;
 }
 
  /* ------------ Sub menu section ------------ */
 
 .subMenu{
     display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .middel{
+        display: none;
+    }
+    .right{
+        display: none;
+    }
 }

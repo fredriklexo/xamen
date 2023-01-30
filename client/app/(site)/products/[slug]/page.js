@@ -65,13 +65,13 @@ export default async function renderProduct( props) {
                                 
                                 return( 
                                     <div key={obj._id} className={styleModule.categoryItem} >
-                                        <img src={obj.featuresSrc} className={styleModule.categoryIcon} />
+                                        <img alt={obj.name}src={obj.featuresSrc} className={styleModule.categoryIcon} />
                                         <p>{ obj.name }</p>
                                     </div>
                                 )
                             })}
                             <div className={styleModule.featuresContainer}>
-                                <img className={styleModule.featuresIcon} src="/product/icons-coffee-beans.png"></img>
+                                <img alt="icon coffe beans" className={styleModule.featuresIcon} src="/product/icons-coffee-beans.png"></img>
                                 <p>{item.features}</p>
                             </div>
                         </div>
@@ -82,9 +82,9 @@ export default async function renderProduct( props) {
                     </div> 
 
                     <div className={styleModule.itemImgContainer }>
-                        <img className={styleModule.productImg }src={item.src} />
-                        <img className={styleModule.ilustrationImgRight }src="/testing.png" />
-                        <img className={styleModule.ilustrationImgLeft  }src="/testing.png" />
+                        <img alt={item.name} className={styleModule.productImg }src={item.src} />
+                        <img alt="flower" className={styleModule.ilustrationImgRight }src="/flower.png" />
+                        <img alt="flower" className={styleModule.ilustrationImgLeft  }src="/flower.png" />
                     </div> 
                     
                 </div>

@@ -2,20 +2,26 @@
 .sectionContainer{
     width:100%;
     height: 100%;
-    margin-bottom: 100px;
-}
-
-.container{
+   
     display: flex;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    
     justify-content: center;
 }
 
 .wrapper{
     display: flex;
     flex-wrap: wrap;
+    width: 100vw;
+    margin-bottom: 100px;
 }
 
   /*  product item styling */
@@ -24,25 +30,26 @@
     background-color: #27403a84;
     margin: 10px;
     height: 500px;
-    width: 300px;
+    max-width: 50%;
     border-radius: 15px;
-    position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1 1 21%; /* explanation below */
-    min-width: 300px;
+    flex: 1 0 21%; /* explanation below */
+   
     filter: drop-shadow(2px 4px 6px black);
 }
 
 
 .productLink{
     display: flex;
+    justify-content: center;
    
 }
 
 .productImage{
-    width: 100%;
-    max-height: 350px;
+    
+    width: 350px;
+    height: 350px;
     object-fit: contain;
     flex: 3;
     transition: 1s;
@@ -110,6 +117,22 @@
 @media only screen and (max-width: 1024px) {
     
     .item{
-        flex: 1 0 40%; /* explanation below */
+      flex: 1 0 40%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .wrapper{
+        justify-content: center;
+    }
+    .item{
+       width: 90%;
+       max-width: none;
+       flex: none;
+       margin: 10px 0px;
+       border-radius: 0;
+
+    }
+    .productImage{
+        width: 100%;
     }
 }
