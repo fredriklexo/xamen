@@ -123,7 +123,7 @@ router.post('/login', async (req, res) => {
                             secure: false,
                             maxAge: 60 * 60 * 24 * 3,
                             path: "/",
-                            domain: "xamen.vercel.app",
+                            domain: "https://xamen.vercel.app",
                             // httpOnly: true,
                             // secure: true,
                             // sameSite: "none",
