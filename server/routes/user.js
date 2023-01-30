@@ -124,7 +124,7 @@ router.post('/login', async (req, res) => {
                             // maxAge: 60 * 60 * 24 * 3,
                             // path: "/",
                             httpOnly: true,
-                            secure: false,
+                            secure: true,
                             sameSite: false,
                             maxAge: 60 * 60 * 24 * 3,
                             path: "/",
