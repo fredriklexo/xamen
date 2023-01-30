@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken"
 import { serialize } from "cookie";
 const verifyToken = (req, res, next) => {
-    // console.log("Req.headers  ",req.headers)
+    console.log("Req.headers  ",req.headers)
     const { cookies } = req;
     // console.log("cookies", cookies)
-    // console.log("token", cookies.accessToken)
+    console.log("token", cookies.accessToken)
     if (cookies.accessToken) {
       
         jwt.verify(cookies.accessToken, process.env.JWT_SEC, (err, user) => {
