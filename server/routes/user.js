@@ -123,13 +123,14 @@ router.post('/login', async (req, res) => {
                             // secure: false,
                             // maxAge: 60 * 60 * 24 * 3,
                             // path: "/",
-                            httpOnly: false,
+                            httpOnly: true,
                             secure: true,
+                            sameSite: "none",
                             maxAge: 60 * 60 * 24 * 3,
-                            domain: "xamen.vercel.app", 
+                            // domain: "xamen.vercel.app", 
                             path: "/",
                           });
-
+                          
                           res.setHeader("Set-Cookie", serialised);
 
                         // res.cookie('accessToken', accessToken, { 
