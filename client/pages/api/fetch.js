@@ -1,6 +1,6 @@
 
 export default async function getAllProductsTset() {
-    const res = await fetch('http://localhost:5000/product/getAll');
+    const res = await fetch('https://xamen-api.vercel.app/product/getAll');
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
   

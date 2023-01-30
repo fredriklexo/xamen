@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 async function getDatas() {
 
-        const res = await fetch("http://localhost:5000/auth/cookieRemove", { 
+        const res = await fetch("https://xamen-api.vercel.app/auth/cookieRemove", { 
         method: 'POST',
         headers: {
             Accept: "applicaiton/json",

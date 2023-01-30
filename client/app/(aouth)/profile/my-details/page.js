@@ -5,7 +5,7 @@ import Link from "next/link";
 
 
 async function getData() {
-    const res = await fetch(`http://localhost:5000/auth/getUser/details`, {
+    const res = await fetch(`https://xamen-api.vercel.app/auth/getUser/details`, {
         method: 'GET',
         headers: {
             Accept: "applicaiton/json",
@@ -27,7 +27,7 @@ async function getData() {
     return res.json();
 }
 async function uppdateUserDetails(mail, firstName, lastName) {
-    const res = await fetch("http://localhost:5000/auth/updateUser/details", { 
+    const res = await fetch("https://xamen-api.vercel.app/auth/updateUser/details", { 
     method: 'POST',
     headers: {
         Accept: "applicaiton/json",

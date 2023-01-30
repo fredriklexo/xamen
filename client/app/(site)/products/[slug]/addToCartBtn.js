@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 async function getData(id) {
 
-        const res = await fetch("http://localhost:5000/cart/cart", { 
+        const res = await fetch("https://xamen-api.vercel.app/cart/cart", { 
         method: 'POST',
         headers: {
             Accept: "applicaiton/json",

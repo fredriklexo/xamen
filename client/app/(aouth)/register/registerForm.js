@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import { useRouter } from 'next/navigation';
 
 async function validateUser(mail,fname,lname,address,zip,pw) {
-    const res = await fetch("http://localhost:5000/user/register", { 
+    const res = await fetch("https://xamen-api.vercel.app/user/register", { 
     method: 'POST',
     headers: {
         Accept: "applicaiton/json",

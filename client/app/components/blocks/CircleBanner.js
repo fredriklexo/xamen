@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Button from "../comps/Button.js"
 
 async function getData() {
-    const res = await fetch('http://localhost:5000/product/getById/637b3ab4fb2b329daeb8084d');
+    const res = await fetch('https://xamen-api.vercel.app/product/getById/637b3ab4fb2b329daeb8084d');
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
   

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 
 async function changePassword(oldPassword, newPassword) {
-    const res = await fetch("http://localhost:5000/auth/changePassword", { 
+    const res = await fetch("https://xamen-api.vercel.app/auth/changePassword", { 
     method: 'POST',
     headers: {
         Accept: "applicaiton/json",

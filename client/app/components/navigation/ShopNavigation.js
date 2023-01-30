@@ -2,7 +2,7 @@ import styles from "./ShopNavigation.module.css"
 import Link from "next/link";
 
 async function getCategory() {
-    const res = await fetch('http://localhost:5000/category/getAll');
+    const res = await fetch('https://xamen-api.vercel.app/category/getAll');
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 
 async function validateUser(name, pass) {
-    const res = await fetch("http://localhost:5000/user/login", { 
+    const res = await fetch("https://xamen-api.vercel.app/user/login", { 
     method: 'POST',
     headers: {
         Accept: "applicaiton/json",

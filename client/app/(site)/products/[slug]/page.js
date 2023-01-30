@@ -6,7 +6,7 @@ import AddToCartBtn from "../[slug]/addToCartBtn.js"
 
 
 async function getData(slug) {
-    const res = await fetch(`http://localhost:5000/product/getBySlug/${slug}`);
+    const res = await fetch(`https://xamen-api.vercel.app/product/getBySlug/${slug}`);
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
   
@@ -20,7 +20,7 @@ async function getData(slug) {
 }
 async function getCategoryById(id) {
 
-    const res = await fetch("http://localhost:5000/category/getByCategoryId", {
+    const res = await fetch("https://xamen-api.vercel.app/category/getByCategoryId", {
     
     method: 'POST',
     headers: {

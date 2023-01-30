@@ -3,7 +3,7 @@ import styles from "./myOrder.module.css"
 import { useEffect, useState } from "react"
 import Link from "next/link";
 async function getData() {
-    const res = await fetch('http://localhost:5000/order/getUserOrder', {
+    const res = await fetch('https://xamen-api.vercel.app/order/getUserOrder', {
         method: 'GET',
         headers: {
             Accept: "applicaiton/json",

@@ -2,7 +2,7 @@
 import styles from "./tou.module.css"
 
 async function getData() {
-  const res = await fetch("http://localhost:5000/stripe/order/success", {
+  const res = await fetch("https://xamen-api.vercel.app/stripe/order/success", {
     method: 'POST',
     headers: {
       Accept: "applicaiton/json",

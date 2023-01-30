@@ -7,7 +7,7 @@ import LoginOrLogut from "../../comps/Button.js"
 import React, { useState, useEffect } from 'react'
 
 async function getCategory() {
-    const res = await fetch('http://localhost:5000/category/getAll');
+    const res = await fetch('https://xamen-api.vercel.app/category/getAll');
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
@@ -20,7 +20,7 @@ async function getCategory() {
     return res.json();
 }
 async function verifyToken() {
-    const res = await fetch('http://localhost:5000/auth/cookie/verifyTooken', {
+    const res = await fetch('https://xamen-api.vercel.app/auth/cookie/verifyTooken', {
         method: 'GET',
         headers: {
             Accept: "applicaiton/json",

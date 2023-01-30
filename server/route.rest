@@ -1,12 +1,12 @@
 //------ products ----------------
-GET http://localhost:5000/product/getAll
+GET https://xamen-api.vercel.app/product/getAll
 
 ###
 
-GET http://localhost:5000/product/getById/637b3da7fb2b329daeb80858
+GET https://xamen-api.vercel.app/product/getById/637b3da7fb2b329daeb80858
 ###
 
-GET http://localhost:5000/product/getBySlug/veranda-blend
+GET https://xamen-api.vercel.app/product/getBySlug/veranda-blend
 ###
 
 
@@ -14,7 +14,7 @@ GET http://localhost:5000/product/getBySlug/veranda-blend
 
 
 //---------- category ----------
-POST http://localhost:5000/category/getByCategoryId
+POST https://xamen-api.vercel.app/category/getByCategoryId
 Content-Type: application/json
 
 {
@@ -23,12 +23,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/category/getById/decaf-coffee
+GET https://xamen-api.vercel.app/category/getById/decaf-coffee
 
 
 ###
 
-GET http://localhost:5000/category/getAll
+GET https://xamen-api.vercel.app/category/getAll
 
 ###
 // --------------------------------------------------
@@ -36,13 +36,13 @@ GET http://localhost:5000/category/getAll
 // --------------------- user ---------------------
 // GET
 
-GET http://localhost:5000/user/getALl
+GET https://xamen-api.vercel.app/user/getALl
 ###
 
 
 
 ###
-PUT http://localhost:5000/user/changePassword
+PUT https://xamen-api.vercel.app/user/changePassword
 Content-Type: application/json
 
 {
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/user/delete/636772b443cb7f4b386d85c7
+DELETE https://xamen-api.vercel.app/user/delete/636772b443cb7f4b386d85c7
 
 
 // --------------------------------------------------
@@ -62,7 +62,7 @@ DELETE http://localhost:5000/user/delete/636772b443cb7f4b386d85c7
 ###
 
 //Post
-POST http://localhost:5000/order/create
+POST https://xamen-api.vercel.app/order/create
 Content-Type: application/json
 
 {
@@ -94,7 +94,7 @@ Content-Type: application/json
 
 // ---------------------- CART -----------------
 
-PUT http://localhost:5000/user/test/63a81e3af2b737707a9cff49
+PUT https://xamen-api.vercel.app/user/test/63a81e3af2b737707a9cff49
 Content-Type: application/json
 token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTgxZTNhZjJiNzM3NzA3YTljZmY0OSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE5NjY1MTIsImV4cCI6MTY3MjIyNTcxMn0.Bd2kOr_jt0J_vYOhkyt4Toxncl0JvFtVI6tX9GF_pl0
 
@@ -107,7 +107,7 @@ token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTgxZTNhZjJiNzM3N
 
 
 // LOGGIN USER
-POST http://localhost:5000/user/login
+POST https://xamen-api.vercel.app/user/login
 Content-Type: application/json
 
 {
@@ -119,7 +119,7 @@ Content-Type: application/json
 ###
 
 //REGISTER USER
-POST http://localhost:5000/auth/register
+POST https://xamen-api.vercel.app/auth/register
 Content-Type: application/json
 
 {
@@ -133,7 +133,7 @@ Content-Type: application/json
 
 ###
 //Check cookie token 
-POST http://localhost:5000/auth/cookie
+POST https://xamen-api.vercel.app/auth/cookie
 Accept: "applicaiton/json"
 Content-Type: "application/json"
 withCredentials: "true"

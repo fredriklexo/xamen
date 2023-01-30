@@ -1,6 +1,6 @@
 export default async function getProductById(id) {
 
-    const res = await fetch(`http://localhost:5000/product/${id}`);
+    const res = await fetch(`https://xamen-api.vercel.app/product/${id}`);
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
   

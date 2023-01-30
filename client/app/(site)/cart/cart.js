@@ -7,7 +7,7 @@ import "./cart.css"
 
 async function getData() {
 
-    const res = await fetch("http://localhost:5000/cart/getCart", {
+    const res = await fetch("https://xamen-api.vercel.app/cart/getCart", {
         method: 'GET',
         headers: {
             Accept: "applicaiton/json",
@@ -33,7 +33,7 @@ async function getData() {
 
 async function cartHandler(id, qty) {
 
-    const res = await fetch("http://localhost:5000/cart/cart", {
+    const res = await fetch("https://xamen-api.vercel.app/cart/cart", {
         method: 'POST',
         headers: {
             Accept: "applicaiton/json",
@@ -64,7 +64,7 @@ async function cartHandler(id, qty) {
 
 async function deleteCartItem(id, qty) {
 
-    const res = await fetch("http://localhost:5000/cart/deleteItem", {
+    const res = await fetch("https://xamen-api.vercel.app/cart/deleteItem", {
         method: 'DELETE',
         headers: {
             Accept: "applicaiton/json",
@@ -94,7 +94,7 @@ async function deleteCartItem(id, qty) {
 }
 async function testPayment(cart) {
 
-    const res = await fetch("http://localhost:5000/order/create-checkout-session", {
+    const res = await fetch("https://xamen-api.vercel.app/order/create-checkout-session", {
         method: 'POST',
         headers: {
             Accept: "applicaiton/json",
