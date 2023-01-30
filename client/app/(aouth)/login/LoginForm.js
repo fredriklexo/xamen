@@ -1,6 +1,6 @@
 
 'use client'
-import styles from "./loginModal.module.css"
+import styles from "loginModal.module.css"
 import {useEffect, useState} from "react"
 import { useRouter } from 'next/navigation';
 
