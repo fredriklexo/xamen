@@ -29,9 +29,35 @@ async function getDatas() {
         return  res.json();
 
 }
+async function getCookie() {
+
+    const res = await fetch("https://xamen-api.vercel.app/auth/cookie/verifyTooken", { 
+    method: 'GET',
+    headers: {
+        Accept: "applicaiton/json",
+        "Content-Type": "application/json",
+    },
+    withCredentials: true, // should be there
+    credentials: 'include', // should be there
+    });
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+    
+    
+    // Recommendation: handle errors
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      
+    }
+    
+    return  res.json();
+
+}
 
 export default function LoginOrLogut() {
-    
+    let [value, setValue] = useState(false);
+
+
     const btnStyle = {
         border: "none",
         background: "transparent",
@@ -52,11 +78,33 @@ export default function LoginOrLogut() {
             
     };
 
+    async function validation() {
+        let response = await getCookie()
+        
+        if(response){
+            setValue(true)
+        }else{
+            setValue(false)
+        }
+
+
+    };
+
+    useEffect(() => {
+
+        validation()
+       
+    }, []);
 
 
     return (
-  
-        <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button>
+        <div>
+            {(value) ?  <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button>
+            :
+            <p>hey</p>}
+
+        </div>
+       
        
     );
     
