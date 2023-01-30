@@ -1,5 +1,5 @@
 
-import LoginForm from "./loginForm"
+import LoginForm from "./loginForm.js"
 import styles from "./loginModal.module.css"
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 
 
-import MainNavigation from './components/navigation/mainNavigation.js'
+import MainNavigation from './components/navigation/MainNavigation.js'
 import Footer from './components/navigation/footer/footer.js'
 import './globals.css'
 import style from "./mainLayout.module.css"
