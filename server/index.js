@@ -22,7 +22,8 @@ db.once('open', () => console.log("Connected to Database"))
 
 
 //middelware
-app.use(cors({ origin: true, credentials: true }));
+// app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ credentials: true }));
 app.use(cp())
 app.use('/stripe/webhook', stripeRouter, express.raw({ type: 'application/json' }), stripeRouter)
 app.use(express.json())
