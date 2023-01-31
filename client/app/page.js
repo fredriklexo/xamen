@@ -1,19 +1,21 @@
 import CategoryBanner from './components/blocks/CategoryBanner.js';
 import HeroBanner from './components/blocks/HeroBanner.js';
-import InfoBanner from './components/blocks/InfoBanner.js';
 import CircleBanner from './components/blocks/CircleBanner.js';
+import MainNavigation from './components/navigation/MainNavigation.js'
 
 export default async function Home() {
  
   return (
-    <section>
+    <>
+      <MainNavigation/> 
+      <section>
+          
+            <HeroBanner />
+            <CircleBanner />
+            <CategoryBanner />
         
-          <HeroBanner />
-          <CircleBanner />
-          {/* <InfoBanner /> */}
-          <CategoryBanner />
-      
-    </section>
+      </section>
+    </>
   )
 }
 

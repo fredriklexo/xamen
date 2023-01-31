@@ -1,6 +1,5 @@
 
 
-import MainNavigation from './components/navigation/MainNavigation.js'
 import Footer from './components/navigation/footer/footer.js'
 import './globals.css'
 import style from "./mainLayout.module.css"
@@ -21,9 +20,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <nav style={{ boxShadow: "0 2px 2px -2px rgba(0,0,0,.5)", display: "flex" }}  >
-          <MainNavigation />
-        </nav>
+       
         <main className={style.mainContainer}>
           <Suspense fallback={<Loading />}>
               {children}
