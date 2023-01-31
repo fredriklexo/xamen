@@ -72,11 +72,12 @@ export default function LoginOrLogut() {
 
     const handleLogout = async () => {
         let foo = await getDatas()
-        console.log(foo)
-        router.refresh()
-        const toggleNavbar = document.getElementById("mobileNavigation")
-        toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
-        router.push("/") 
+        if(foo.status == "success"){
+            router.refresh()
+            const toggleNavbar = document.getElementById("mobileNavigation")
+            toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
+            router.push("/") 
+        }
     };
 
     async function validateUser() {
