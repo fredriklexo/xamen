@@ -55,7 +55,7 @@ async function getCookie() {
 }
 
 export default function LoginOrLogut() {
-    let [value, setValue] = useState();
+    let [value, setValue] = useState(false);
 
 
     const btnStyle = {
@@ -78,7 +78,7 @@ export default function LoginOrLogut() {
             
     };
 
-    async function validation() {
+    let validation = async () => {
         let response = await getCookie()
         console.log(response.status )
         if(response.status == "success"){
