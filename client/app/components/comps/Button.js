@@ -56,6 +56,7 @@ async function checkIfUserIsLogedIn() {
 
 export default function LoginOrLogut() {
     let router = useRouter()
+   
     const [user, setUser] = useState(false);
 
 
@@ -76,36 +77,41 @@ export default function LoginOrLogut() {
         toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
         router.push("/") 
     };
-    const validateUser = async () => {
+
+    async function validateUser() {
         let user = await checkIfUserIsLogedIn()
-        console.log("user",user)
-        if(user.status == "success"){
-            setUser(true)
-        }else{
+        
+        if(user.status == "notAuthorized"){
             setUser(false)
+            console.log("user is set:",user)
         }
+
+        if (user.status === "success") {
+            setUser(true)
+            console.log("user is set:",user)
+        }
+       
       
     };
     useEffect(() => {
         validateUser()
-      },[]);
+        
+    },[]);
 
 
     return (
         <>
-            {(user) ? <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button> 
-            :
+            {(user) ?        
             <div>
-
+                <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button> 
                 <Link href="/profile" ><img alt="person icon"  src="/icons/person.svg"></img></Link>
-                
-                <Link href="/login"><p>Login</p> </Link>
             </div>
             
+            :undefined
             }
             
-
-        
+            {(!user) ?   <Link href="/login"><p>Login</p> </Link> : undefined}
+           
          
         </>
     );
@@ -114,6 +120,5 @@ export default function LoginOrLogut() {
    
 
 }
-
 
 
