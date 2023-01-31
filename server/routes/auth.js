@@ -62,7 +62,7 @@ router.post('/cookieRemove', verifyToken, async (req, res) => {
     try {
         
         
-        res.clearCookie("accessToken").json('cleared cookie');
+        res.clearCookie("accessToken",{ path: '/',expires: Date.now() }).json('cleared cookie');
         
         
     } catch (error) {
