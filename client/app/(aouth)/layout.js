@@ -1,4 +1,4 @@
-import MainNavigation from '../components/navigation/mainNavigation.js'
+import MainNavigation from '../components/navigation/MainNavigation.js'
 
 export default function DashboardLayout({children}){
   
