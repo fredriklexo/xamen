@@ -80,8 +80,8 @@ export default function LoginOrLogut() {
 
     async function validation() {
         let response = await getCookie()
-        console.log(response)
-        if(response){
+        console.log(response.status )
+        if(response.status == "success"){
             setValue(true)
         }else{
             setValue(false)
