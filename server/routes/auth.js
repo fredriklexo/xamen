@@ -60,9 +60,9 @@ router.post('/changePassword', verifyToken,  async (req, res) => {
 router.post('/cookieRemove', verifyToken, async (req, res) => {
 
     try {
+        res.clearCookie("accessToken").json('cleared cookie');
         
-        
-        res.clearCookie("accessToken",{ path: '/', domain: "https://xamen-api.vercel.app" }).json('cleared cookie');
+        // res.clearCookie("accessToken",{ path: '/', domain: "https://xamen-api.vercel.app" }).json('cleared cookie');
         
     } catch (error) {
         res.status(404).json({ message: error.message })
