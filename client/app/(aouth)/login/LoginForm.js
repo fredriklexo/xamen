@@ -49,7 +49,7 @@ export default  function LoginForm() {
         event.preventDefault();
         
         var { mail, pass } = document.forms[0];
-        console.log("mail: ", mail.value)
+        
         let res = await validateUser(mail.value, pass.value)
         // console.log(test)
         if(res.accessToken){
