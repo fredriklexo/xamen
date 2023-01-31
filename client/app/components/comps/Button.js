@@ -83,8 +83,10 @@ export default function LoginOrLogut() {
         console.log(response.status )
         if(response.status == "success"){
             setValue(true)
+            router.refresh()
         }else{
             setValue(false)
+            router.refresh()
         }
 
 
