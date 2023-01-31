@@ -9,6 +9,7 @@ import MobileNavigation from "./mobile/MobileNavigation.js"
 async function MainNavigation(children){
 
     const nextCookies = cookies();
+    console.log("nextCookies:",nextCookies)
     const userIsValidated = nextCookies.has('accessToken');
     console.log("userIsValidated", userIsValidated)
     return(
