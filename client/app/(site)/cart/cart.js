@@ -1,6 +1,7 @@
 
 'use client'
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from "next/link"
 import "./cart.css"
 
@@ -123,9 +124,7 @@ async function testPayment(cart) {
 
 }
 export default function Checkout() {
-    // let tooken = null
-
-    // var item = await getData()
+    const router = useRouter();
     let [cart, setCart] = useState([]);
 
 
@@ -133,7 +132,9 @@ export default function Checkout() {
     async function getCart() {
         let response = await getData()
         
-        
+        if(response.status == "notAuthorized"){
+            router.push("/login")
+        }
         if (response.status === "success") {
            
             return setCart(response.data)
