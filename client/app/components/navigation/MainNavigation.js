@@ -10,7 +10,7 @@ async function MainNavigation(children){
 
     const nextCookies = cookies();
     const userIsValidated = nextCookies.has('accessToken');
-    
+    console.log("userIsValidated", userIsValidated)
     return(
         <nav className={style.container}>
             <div className={style.left}>
