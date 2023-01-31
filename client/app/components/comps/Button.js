@@ -71,7 +71,8 @@ export default function LoginOrLogut() {
     
 
     const handleLogout = async () => {
-        await getDatas()
+        let foo = await getDatas()
+        console.log(foo)
         router.refresh()
         const toggleNavbar = document.getElementById("mobileNavigation")
         toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
