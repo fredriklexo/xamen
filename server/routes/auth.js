@@ -60,18 +60,18 @@ router.post('/changePassword', verifyToken,  async (req, res) => {
 router.post('/cookieRemove', verifyToken, async (req, res) => {
 
     try {
-        if(req.uesr){
-            const serialised = serialize("accessToken", null, {
-                httpOnly: true,
-                secure: true,
-                sameSite: "None",
-                maxAge: -1,
-                path: "/",
-              });
-              
-              res.setHeader("Set-Cookie", serialised);
-              res.json({message:"wooho?", status:"success"})
-        }
+        
+                const serialised = serialize("accessToken", null, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "None",
+                    maxAge: -1,
+                    path: "/",
+                });
+                
+                res.setHeader("Set-Cookie", serialised);
+                res.json({message:"wooho?", status:"success"})
+        
       
         // res.clearCookie("accessToken",{ path: '/', domain: "https://xamen-api.vercel.app" }).json('cleared cookie');
         
