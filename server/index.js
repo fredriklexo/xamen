@@ -23,7 +23,6 @@ db.once('open', () => console.log("Connected to Database"))
 
 //middelware
 app.use(cors({ origin: ['https://xamen-api.vercel.app', 'https://xamen.vercel.app']  , credentials: true }));
-// app.use(cors());
 app.use(cp())
 app.use('/stripe/webhook', stripeRouter, express.raw({ type: 'application/json' }), stripeRouter)
 app.use(express.json())
