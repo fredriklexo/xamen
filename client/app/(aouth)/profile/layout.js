@@ -2,16 +2,11 @@
 
 import styles from "./profile.module.css"
 import Link from "next/link";
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+
 
 
 export default function loginLayout({ children }) {
-    const nextCookies = cookies();
-    const userIsValidated = nextCookies.has('accessToken');
-    if(!userIsValidated){
-        redirect("/")
-    }
+    
   return (
    
     <div className={styles.container}>
