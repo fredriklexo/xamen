@@ -35,7 +35,7 @@ async function MainNavigation(children){
                <Link href="/profile" ><img alt="person icon" className={style.icon} src="/icons/person.svg"></img></Link>
                </>
                :  <Link href="/login"><p>Login</p> </Link> }
-               <LoginOrLogut /> 
+               <LoginOrLogut>{children}</LoginOrLogut> 
                <Link href="/cart" ><img alt="coffee icon" className={style.icon} src="/icons/coffee.svg"></img></Link>
             </div>
             
