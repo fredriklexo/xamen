@@ -8,10 +8,7 @@ import MobileNavigation from "./mobile/MobileNavigation.js"
 
 async function MainNavigation(children){
 
-    const nextCookies = cookies();
-    console.log("nextCookies:",nextCookies)
-    const userIsValidated = nextCookies.has('accessToken');
-    console.log("userIsValidated", userIsValidated)
+   
     return(
         <nav className={style.container}>
             <div className={style.left}>
@@ -29,13 +26,6 @@ async function MainNavigation(children){
 
             <div className={style.right}>
                 
-               
-               { (userIsValidated) ? 
-               <>
-               <LoginOrLogut /> 
-               <Link href="/profile" ><img alt="person icon" className={style.icon} src="/icons/person.svg"></img></Link>
-               </>
-               :  <Link href="/login"><p>Login</p> </Link> }
                <LoginOrLogut>{children}</LoginOrLogut> 
                <Link href="/cart" ><img alt="coffee icon" className={style.icon} src="/icons/coffee.svg"></img></Link>
             </div>

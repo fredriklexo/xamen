@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 async function getDatas() {
 
-        const res = await fetch("https://xamen-api.vercel.app/auth/cookieRemove", { 
+        const res = await fetch("http://localhost:5000/auth/cookieRemove", { 
         method: 'POST',
         headers: {
             Accept: "applicaiton/json",
@@ -29,9 +29,9 @@ async function getDatas() {
         return  res.json();
 
 }
-async function getCookie() {
+async function checkIfUserIsLogedIn() {
 
-    const res = await fetch("https://xamen-api.vercel.app/auth/cookie/verifyTooken", { 
+    const res = await fetch("http://localhost:5000/auth/cookie/verifyTooken", { 
     method: 'GET',
     headers: {
         Accept: "applicaiton/json",
@@ -55,7 +55,8 @@ async function getCookie() {
 }
 
 export default function LoginOrLogut() {
-    let [value, setValue] = useState(false);
+    let router = useRouter()
+    const [user, setUser] = useState(false);
 
 
     const btnStyle = {
@@ -66,48 +67,47 @@ export default function LoginOrLogut() {
         fontSize: "18px",
       };
    
-    let router = useRouter()
+    
 
     const handleLogout = async () => {
         await getDatas()
         router.refresh()
         const toggleNavbar = document.getElementById("mobileNavigation")
         toggleNavbar.classList.remove("mobileNavigation_container__4jbbd")
-        router.push("/")
-        
-            
+        router.push("/") 
     };
-
-    let validation = async () => {
-        let response = await getCookie()
-        console.log(response.status )
-        if(response.status == "success"){
-            setValue(true)
-            router.refresh()
+    const validateUser = async () => {
+        let user = await checkIfUserIsLogedIn()
+        console.log("user",user)
+        if(user.status == "success"){
+            setUser(true)
         }else{
-            setValue(false)
-            router.refresh()
+            setUser(false)
         }
-
-
+      
     };
-
     useEffect(() => {
-
-        validation()
-       
-    }, []);
+        validateUser()
+      },[]);
 
 
     return (
-        <div>
-            {(value) ?  <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button>
+        <>
+            {(user) ? <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button> 
             :
-            <p>hey</p>}
+            <div>
 
-        </div>
-       
-       
+                <Link href="/profile" ><img alt="person icon"  src="/icons/person.svg"></img></Link>
+                
+                <Link href="/login"><p>Login</p> </Link>
+            </div>
+            
+            }
+            
+
+        
+         
+        </>
     );
     
 
