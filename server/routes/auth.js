@@ -62,7 +62,7 @@ router.post('/cookieRemove', verifyToken, async (req, res) => {
     try {
         
         
-        res.clearCookie("accessToken",{ path: '/' }).json('cleared cookie');
+        res.clearCookie("accessToken",{ path: '/', domain: "https://xamen.vercel.app" }).json('cleared cookie');
         
     } catch (error) {
         res.status(404).json({ message: error.message })
