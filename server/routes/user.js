@@ -54,25 +54,14 @@ router.post('/register', async (req, res) => {
                                 
         
                                 const serialised = serialize("accessToken", accessToken, {
-                                    // httpOnly: true,
-                                    // secure: false,
-                                    // maxAge: 60 * 60 * 24 * 3,
-                                    // path: "/",
                                     httpOnly: true,
-                                    secure: false,
-                                    sameSite: false,
+                                    secure: true,
+                                    sameSite: "None",
                                     maxAge: 60 * 60 * 24 * 3,
                                     path: "/",
                                   });
-        
-                                  res.setHeader("Set-Cookie", serialised);
-        
-                                // res.cookie('accessToken', accessToken, { 
-                                //     maxAge: 60 * 60 * 24 * 3,
-                                //     secure: false, 
-                                //     httpOnly:true  
-                                // });
-        
+                                  
+                                res.setHeader("Set-Cookie", serialised);
                                 res.status(200).json({...others, accessToken});
                         }
                         // if passwords do not match

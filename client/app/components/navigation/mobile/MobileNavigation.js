@@ -96,12 +96,8 @@ export default function MobileNavigation() {
                 <div className={style.subNavigationContainer}>
 
                     {(user) ?
-                        <>
-                            <LoginOrLogut  />
-                            <div onClick={() => { router.push("/profile"), handelToggle() }}>
-                                <img alt="person icon" className={style.subIcon} src="/icons/person.svg"></img>
-                            </div>
-                        </>
+                        <LoginOrLogut  />
+                            
                         : <div onClick={() => { router.push("/login"), handelToggle() }}>
                             <p>Login</p>
                         </div>}
