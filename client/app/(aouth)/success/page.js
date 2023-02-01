@@ -39,7 +39,8 @@ export default async function orderSuccess(props) {
     // redirect("/")
   }
   
-  
+  let order = await getData(props.searchParams.session_id)
+  console.log("order details:",order)
   
      
   
@@ -51,7 +52,8 @@ export default async function orderSuccess(props) {
       <div className={styles.wrapper}>
         <h1> Thank you.</h1>
         <h2>Your order was completed successfully.</h2>
-      
+        {(order) ? <p>{order.shipping.email}</p>:undefined }
+        
       </div>
       
     </div>

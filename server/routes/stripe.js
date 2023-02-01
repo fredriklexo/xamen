@@ -84,8 +84,9 @@ router.post('/order/success', async (req, res) => {
     console.log("session",session)
     const customer = await stripe.customers.retrieve(session.customer);
 
-  // res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
-  res.status(200).json(customer)
+    const orderInDB = await Order.find({customerId: customer.customer})
+
+    res.status(200).json(orderInDB)
   } catch (error) {
     
   }
