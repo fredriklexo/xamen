@@ -104,10 +104,10 @@ export default function LoginOrLogut() {
     return (
         <>
             {(user) ?        
-            <div>
+            <>
                 <button style={btnStyle}  onClick={handleLogout}><p>Logout</p></button> 
-                <Link href="/profile" ><img alt="person icon"  src="/icons/person.svg"></img></Link>
-            </div>
+                <Link href="/profile" ><img className="profileIcon" alt="person icon"  src="/icons/person.svg"></img></Link>
+            </>
             
             :undefined
             }

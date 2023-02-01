@@ -79,6 +79,11 @@ p{
 .fourthColor{
   background-color:   #12211e;  
 }
+
+.profileIcon{
+  width: 20px;
+  height: 20px;
+}
 @media only screen and (max-width: 1024px) {
   .toggleButton{
       display: flex;
