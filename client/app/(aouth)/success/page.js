@@ -26,17 +26,17 @@ async function getData(id) {
 
 
 export default async function orderSuccess(props) {
+  let order = await getData(props.searchParams.session_id)
+  // if(props.searchParams.session_id){
   
-  if(props.searchParams.session_id){
-  
-        var order = await getData(props.searchParams.session_id)
-        console.log(order)
+  //       var order = await getData(props.searchParams.session_id)
+  //       console.log(order)
    
-  }else{
-    // redirect("/")
-  }
+  // }else{
+  //   // redirect("/")
+  // }
   
- 
+  console.log("Mr order:",order)
   
      
   
