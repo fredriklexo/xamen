@@ -14,7 +14,6 @@ async function getData(id) {
   });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
-  console.log("HALLOO MR RES", res)
   
   // Recommendation: handle errors
   if (!res.ok) {
