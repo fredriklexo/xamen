@@ -32,11 +32,11 @@ export default async function orderSuccess(props) {
        let user = await getData(props.searchParams.session_id)
        console.log(user)
     }else{
-      redirect("/")
+      // redirect("/")
     }
 
   }else{
-    redirect("/")
+    // redirect("/")
   }
   
   
