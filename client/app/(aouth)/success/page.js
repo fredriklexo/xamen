@@ -29,8 +29,9 @@ export default async function orderSuccess(props) {
   console.log(props)
   if(props.searchParams.session_id){
     if(props.searchParams.session_id.includes("cs_test_")){
-       let user = await getData(props.searchParams.session_id)
-       console.log(user)
+      //  let user = await getData(props.searchParams.session_id)
+        var order = await getData(props.searchParams.session_id)
+       
     }else{
       // redirect("/")
     }
@@ -39,8 +40,7 @@ export default async function orderSuccess(props) {
     // redirect("/")
   }
   
-  let order = await getData(props.searchParams.session_id)
-  console.log("order details:",order)
+ 
   
      
   
