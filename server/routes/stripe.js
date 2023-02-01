@@ -64,11 +64,12 @@ router.post('/webhook', express.raw({type: 'application/json'}), async (request,
       break;
       case 'checkout.session.completed':
         const data = event.data.object;
-        stripe.customers.retrieve(data.customer).then((customer => {
+       
+        let  stripeCustomer = stripe.customers.retrieve(data.customer).then((customer => {
+            return customer
           
-          createNewOrder(customer,data)
         })).catch(err => console.log(err.message))
-        // handlePaymentMethodAttached(paymentMethod);
+        await createNewOrder(stripeCustomer,data)
         break;
     default:
       console.log(`Unhandled event type ${event.type}`);
