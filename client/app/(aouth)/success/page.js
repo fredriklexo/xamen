@@ -26,16 +26,12 @@ async function getData(id) {
 
 
 export default async function orderSuccess(props) {
-  console.log(props)
+  
   if(props.searchParams.session_id){
-    if(props.searchParams.session_id.includes("cs_test_")){
-      //  let user = await getData(props.searchParams.session_id)
+  
         var order = await getData(props.searchParams.session_id)
-       
-    }else{
-      // redirect("/")
-    }
-
+        console.log(order)
+   
   }else{
     // redirect("/")
   }
@@ -53,7 +49,7 @@ export default async function orderSuccess(props) {
         <h1> Thank you.</h1>
         <h2>Your order was completed successfully.</h2>
         {(order) ? <p>{order.shipping.email}</p>:undefined }
-        
+        {(order) ? <p>order är true</p>:undefined }
       </div>
       
     </div>
