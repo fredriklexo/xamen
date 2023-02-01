@@ -20,7 +20,7 @@ async function getData() {
 }
 
 async function getProductsByCategory(id) {
-    const res = await fetch(`https://xamen-api.vercel.app/product/getByCategory/${id}`);
+    const res = await fetch(`https://xamen-api.vercel.app/product/getByCategory/${id}`,{ cache: 'no-store' });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
