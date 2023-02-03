@@ -26,17 +26,17 @@ async function getData(id) {
 
 
 export default async function orderSuccess(props) {
-  let order = await getData(props.searchParams.session_id)
-  // if(props.searchParams.session_id){
+  // let order = await getData(props.searchParams.session_id)
+  // // if(props.searchParams.session_id){
   
-  //       var order = await getData(props.searchParams.session_id)
-  //       console.log(order)
+  // //       var order = await getData(props.searchParams.session_id)
+  // //       console.log(order)
    
-  // }else{
-  //   // redirect("/")
-  // }
+  // // }else{
+  // //   // redirect("/")
+  // // }
   
-  console.log("Mr order:",order)
+  // console.log("Mr order:",order)
   
      
   
@@ -48,8 +48,7 @@ export default async function orderSuccess(props) {
       <div className={styles.wrapper}>
         <h1> Thank you.</h1>
         <h2>Your order was completed successfully.</h2>
-        {(order) ? <p>{order.total}</p>:undefined }
-        {(order) ? <p>order är true</p>:undefined }
+        <p>You can find your order in your user profile</p>
       </div>
       
     </div>
